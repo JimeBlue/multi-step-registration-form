@@ -27,6 +27,9 @@
   </section>
 </template>
 <script>
+import { db } from "~/plugins/firebase.js";
+import { collection, addDoc } from "firebase/firestore";
+
 export default {
   data() {
     return {
@@ -46,8 +49,14 @@ export default {
     prevStep() {
       this.step--;
     },
-    submitForm() {
-      // Submit the form data to Firebase
+    async submitForm() {
+      try {
+        const docRef = await addDoc(collection(db, "forms"), this.form);
+        alert("Form submitted successfully!");
+      } catch (error) {
+        console.error("Error submitting form:", error);
+        alert("There was an error submitting the form.");
+      }
     },
   },
 };
