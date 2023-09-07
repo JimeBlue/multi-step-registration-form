@@ -1,5 +1,7 @@
 <template>
   <section>
+    <!-- NOTE: Step indicator -->
+    <StepIndicator :step="step" />
     <!-- NOTE: Personal Information -->
     <div v-if="step === 1">
       <h2>Personal Information</h2>
@@ -109,12 +111,14 @@ import { collection, addDoc } from "firebase/firestore";
 import TextInput from "@/components/form/TextInput.vue";
 import CheckboxInput from "@/components/form/CheckboxInput.vue";
 import RadioGroup from "@/components/form/RadioGroup.vue";
+import StepIndicator from "@/components/form/StepIndicator.vue";
 
 export default {
   components: {
     TextInput,
     RadioGroup,
     CheckboxInput,
+    StepIndicator,
   },
   data() {
     return {
