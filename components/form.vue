@@ -5,7 +5,12 @@
     <!-- NOTE: Personal Information -->
     <div v-if="step === 1">
       <h2>Personal Information</h2>
-      <FormTextInput v-model="form.name" placeholder="Name" />
+      <FormTextInput
+        v-model="form.name"
+        placeholder="Name"
+        v-validate="'required'"
+        name="name"
+      />
       <FormTextInput v-model="form.email" placeholder="Email" />
       <FormTextInput
         v-model="form.phone_number"
@@ -49,12 +54,8 @@
     <!-- NOTE: Add-ons-->
     <div v-if="step === 3">
       <h2>Pick Add-ons</h2>
-      <CheckboxInput
-        v-model="form.onlineService"
-        :label="
-          form.billingYearly ? 'Online Servic 10/yr' : 'Online Service 1/mo'
-        "
-      />
+      <CheckboxInput v-model="form.onlineService" label="Online Service" />
+
       <CheckboxInput
         v-model="form.largerStorage"
         :label="
@@ -180,9 +181,15 @@ export default {
   },
   methods: {
     nextStep() {
-      // Add validation logic here using VeeValidate
-      this.step++;
+      this.$validator.validateAll().then((isValid) => {
+        if (isValid) {
+          this.step++;
+        } else {
+          alert("Please correct the errors before proceeding.");
+        }
+      });
     },
+
     prevStep() {
       this.step--;
     },
