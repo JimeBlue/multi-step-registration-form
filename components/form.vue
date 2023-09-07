@@ -47,6 +47,26 @@
     <!-- NOTE: Add-ons-->
     <div v-if="step === 3">
       <h2>Pick Add-ons</h2>
+      <CheckboxInput
+        v-model="form.onlineService"
+        :label="
+          form.billingYearly ? 'Online Servic 10/yr' : 'Online Service 1/mo'
+        "
+      />
+      <CheckboxInput
+        v-model="form.largerStorage"
+        :label="
+          form.billingYearly ? 'Larger Storage 20/yr' : 'Larger Storage 2/mo'
+        "
+      />
+      <CheckboxInput
+        v-model="form.customizableProfile"
+        :label="
+          form.billingYearly
+            ? 'Customizable Profile 20/yr'
+            : 'Customizable Profile 2/mo'
+        "
+      />
 
       <button @click="prevStep">Previous</button>
       <button @click="nextStep">Next</button>
@@ -82,6 +102,9 @@ export default {
         phone_number: "",
         plan: "",
         billingYearly: false,
+        onlineService: false,
+        largerStorage: false,
+        customizableProfile: false,
       },
     };
   },
