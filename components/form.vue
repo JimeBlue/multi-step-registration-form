@@ -2,8 +2,12 @@
   <section>
     <div v-if="step === 1">
       <h2>Personal Information</h2>
-      <input v-model="form.name" placeholder="Name" />
-      <input v-model="form.email" placeholder="Email" />
+      <FormTextInput v-model="form.name" placeholder="Name" />
+      <FormTextInput v-model="form.email" placeholder="Email" />
+      <FormTextInput
+        v-model="form.phone_number"
+        placeholder="e.g. +1 234 567 890"
+      />
       <button @click="nextStep">Next</button>
     </div>
     <div v-if="step === 2">
@@ -37,7 +41,7 @@ export default {
       form: {
         name: "",
         email: "",
-        // Add other form fields here
+        phone_number: "",
       },
     };
   },
