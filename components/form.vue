@@ -25,11 +25,11 @@
           },
           {
             value: 'advanced',
-            label: form.billingYearly ? 'Arcade 120/yr' : 'Arcade 12/mo',
+            label: form.billingYearly ? 'Advanced 120/yr' : 'Advanced 12/mo',
           },
           {
             value: 'pro',
-            label: form.billingYearly ? 'Arcade 150/yr' : 'Arcade 15/mo',
+            label: form.billingYearly ? 'Pro 150/yr' : 'Pro 15/mo',
           },
         ]"
       />
