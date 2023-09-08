@@ -209,11 +209,14 @@ export default {
 
     async submitForm() {
       try {
+        // Intentionally throw an error for testing
+        // throw new Error("Intentional submission error for testing!");
+
         const docRef = await addDoc(collection(db, "forms"), this.form);
         alert("Form submitted successfully!");
       } catch (error) {
         console.error("Error submitting form:", error);
-        alert("There was an error submitting the form.");
+        this.$swal("Error", "There was an error submitting the form.", "error");
       }
     },
   },
