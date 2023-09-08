@@ -1,20 +1,28 @@
 <template>
-  <div>
-    <label v-if="label">{{ label }}</label>
-    <div v-for="option in options" :key="option.value">
-      <input
-        type="radio"
-        :id="option.value"
-        :value="option.value"
-        v-model="internalValue"
-      />
-      <label :for="option.value">{{ option.label }}</label>
+  <ValidationProvider :rules="rules" v-slot="{ errors }">
+    <div>
+      <label v-if="label">{{ label }}</label>
+      <div v-for="option in options" :key="option.value">
+        <input
+          type="radio"
+          :id="option.value"
+          :value="option.value"
+          v-model="internalValue"
+        />
+        <label :for="option.value">{{ option.label }}</label>
+      </div>
+      <span v-if="errors[0]">{{ errors[0] }}</span>
     </div>
-  </div>
+  </ValidationProvider>
 </template>
 
 <script>
+import { ValidationProvider } from "vee-validate";
+
 export default {
+  components: {
+    ValidationProvider,
+  },
   props: {
     label: {
       type: String,
@@ -28,6 +36,10 @@ export default {
       type: String,
       default: "",
     },
+    rules: {
+      type: String,
+      default: "",
+    },
   },
   data() {
     return {
@@ -35,11 +47,11 @@ export default {
     };
   },
   watch: {
-    internalValue(newVal) {
-      this.$emit("input", newVal);
-    },
     value(newVal) {
       this.internalValue = newVal;
+    },
+    internalValue(newVal) {
+      this.$emit("input", newVal);
     },
   },
 };

@@ -26,6 +26,7 @@
         <RadioGroup
           v-model="form.plan"
           label="Select Plan"
+          rules="required"
           :options="[
             {
               value: 'arcade',
