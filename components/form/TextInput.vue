@@ -1,21 +1,18 @@
 <template>
   <div>
-    <input
-      type="text"
-      :placeholder="placeholder"
-      :value="value"
-      @input="updateValue"
-      v-validate="validation"
-      :name="name"
-    />
-    <span v-if="validationErrors && validationErrors.has(name)">{{
-      validationErrors.first(name)
-    }}</span>
+    <ValidationProvider :rules="rules" v-slot="{ errors }">
+      <input type="text" :placeholder="placeholder" v-model="inputValue" />
+      <span v-if="errors[0]">{{ errors[0] }}</span>
+    </ValidationProvider>
   </div>
 </template>
 
 <script>
+import { ValidationProvider } from "vee-validate";
 export default {
+  components: {
+    ValidationProvider,
+  },
   props: {
     value: {
       type: String,
@@ -25,24 +22,22 @@ export default {
       type: String,
       default: "",
     },
-    validation: {
-      type: String,
-      default: "",
-    },
-    name: {
+    rules: {
       type: String,
       default: "",
     },
   },
-  computed: {
-    validationErrors() {
-      return this.$_veeValidate ? this.$_veeValidate.errors : null;
-    },
+  data() {
+    return {
+      inputValue: this.value,
+    };
   },
-
-  methods: {
-    updateValue(event) {
-      this.$emit("input", event.target.value);
+  watch: {
+    value(newVal) {
+      this.inputValue = newVal;
+    },
+    inputValue(newVal) {
+      this.$emit("input", newVal);
     },
   },
 };

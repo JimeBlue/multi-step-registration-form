@@ -2,113 +2,111 @@
   <section>
     <!-- NOTE: Step indicator -->
     <StepIndicator :step="step" />
-    <!-- NOTE: Personal Information -->
-    <div v-if="step === 1">
-      <h2>Personal Information</h2>
-      <FormTextInput
-        v-model="form.name"
-        placeholder="Name"
-        v-validate="'required'"
-        name="name"
-      />
-      <FormTextInput v-model="form.email" placeholder="Email" />
-      <FormTextInput
-        v-model="form.phone_number"
-        placeholder="e.g. +1 234 567 890"
-      />
-      <button @click="nextStep">Next</button>
-    </div>
-    <!-- NOTE: Plans-->
-    <div v-if="step === 2">
-      <h2>Select Your Plan</h2>
-      <!-- Plans -->
-      <RadioGroup
-        v-model="form.plan"
-        label="Select Plan"
-        :options="[
-          {
-            value: 'arcade',
-            label: form.billingYearly ? 'Arcade 90/yr' : 'Arcade 9/mo',
-          },
-          {
-            value: 'advanced',
-            label: form.billingYearly ? 'Advanced 120/yr' : 'Advanced 12/mo',
-          },
-          {
-            value: 'pro',
-            label: form.billingYearly ? 'Pro 150/yr' : 'Pro 15/mo',
-          },
-        ]"
-      />
-      <!-- Toggle Switch for Billing Period -->
-      <div>
-        <CheckboxInput
-          v-model="form.billingYearly"
-          :label="form.billingYearly ? 'Yearly' : 'Monthly'"
+    <ValidationObserver ref="observer">
+      <!-- NOTE: Personal Information -->
+      <div v-if="step === 1">
+        <h2>Personal Information</h2>
+        <FormTextInput
+          v-model="form.name"
+          placeholder="Name"
+          rules="required"
         />
+        <FormTextInput v-model="form.email" placeholder="Email" />
+        <FormTextInput
+          v-model="form.phone_number"
+          placeholder="e.g. +1 234 567 890"
+          rules="required"
+        />
+        <button @click="nextStep">Next</button>
       </div>
-
-      <button @click="prevStep">Previous</button>
-      <button @click="nextStep">Next</button>
-    </div>
-    <!-- NOTE: Add-ons-->
-    <div v-if="step === 3">
-      <h2>Pick Add-ons</h2>
-      <CheckboxInput v-model="form.onlineService" label="Online Service" />
-
-      <CheckboxInput
-        v-model="form.largerStorage"
-        :label="
-          form.billingYearly ? 'Larger Storage 20/yr' : 'Larger Storage 2/mo'
-        "
-      />
-      <CheckboxInput
-        v-model="form.customizableProfile"
-        :label="
-          form.billingYearly
-            ? 'Customizable Profile 20/yr'
-            : 'Customizable Profile 2/mo'
-        "
-      />
-
-      <button @click="prevStep">Previous</button>
-      <button @click="nextStep">Next</button>
-    </div>
-    <!-- NOTE: Summary -->
-    <div v-if="step === 4">
-      <h2>Summary</h2>
-
-      <p>Finishing up</p>
-      <p>Double-check everything looks OK before confirming.</p>
-      <!-- Display Chosen Plan with Billing Period and Price -->
-      <div>
-        <p>
-          {{ chosenPlan }} ({{ form.billingYearly ? "Yearly" : "Monthly" }}) -
-          ${{ form.billingYearly ? yearlyPlanPrice : monthlyPlanPrice }}
-          <button @click="goToStep(2)">Change</button>
-        </p>
+      <!-- NOTE: Plans-->
+      <div v-if="step === 2">
+        <h2>Select Your Plan</h2>
+        <!-- Plans -->
+        <RadioGroup
+          v-model="form.plan"
+          label="Select Plan"
+          :options="[
+            {
+              value: 'arcade',
+              label: form.billingYearly ? 'Arcade 90/yr' : 'Arcade 9/mo',
+            },
+            {
+              value: 'advanced',
+              label: form.billingYearly ? 'Advanced 120/yr' : 'Advanced 12/mo',
+            },
+            {
+              value: 'pro',
+              label: form.billingYearly ? 'Pro 150/yr' : 'Pro 15/mo',
+            },
+          ]"
+        />
+        <!-- Toggle Switch for Billing Period -->
+        <div>
+          <CheckboxInput
+            v-model="form.billingYearly"
+            :label="form.billingYearly ? 'Yearly' : 'Monthly'"
+          />
+        </div>
+        <button @click="prevStep">Previous</button>
+        <button @click="nextStep">Next</button>
       </div>
-      <!-- Display Chosen Add-ons -->
-      <div v-if="form.onlineService">
-        Online Service - ${{ form.billingYearly ? "10/yr" : "1/mo" }}
+      <!-- NOTE: Add-ons-->
+      <div v-if="step === 3">
+        <h2>Pick Add-ons</h2>
+        <CheckboxInput v-model="form.onlineService" label="Online Service" />
+        <CheckboxInput
+          v-model="form.largerStorage"
+          :label="
+            form.billingYearly ? 'Larger Storage 20/yr' : 'Larger Storage 2/mo'
+          "
+        />
+        <CheckboxInput
+          v-model="form.customizableProfile"
+          :label="
+            form.billingYearly
+              ? 'Customizable Profile 20/yr'
+              : 'Customizable Profile 2/mo'
+          "
+        />
+        <button @click="prevStep">Previous</button>
+        <button @click="nextStep">Next</button>
       </div>
-      <div v-if="form.largerStorage">
-        Larger Storage - ${{ form.billingYearly ? "20/yr" : "2/mo" }}
+      <!-- NOTE: Summary -->
+      <div v-if="step === 4">
+        <h2>Summary</h2>
+        <p>Finishing up</p>
+        <p>Double-check everything looks OK before confirming.</p>
+        <!-- Display Chosen Plan with Billing Period and Price -->
+        <div>
+          <p>
+            {{ chosenPlan }} ({{ form.billingYearly ? "Yearly" : "Monthly" }}) -
+            ${{ form.billingYearly ? yearlyPlanPrice : monthlyPlanPrice }}
+            <button @click="goToStep(2)">Change</button>
+          </p>
+        </div>
+        <!-- Display Chosen Add-ons -->
+        <div v-if="form.onlineService">
+          Online Service - ${{ form.billingYearly ? "10/yr" : "1/mo" }}
+        </div>
+        <div v-if="form.largerStorage">
+          Larger Storage - ${{ form.billingYearly ? "20/yr" : "2/mo" }}
+        </div>
+        <div v-if="form.customizableProfile">
+          Customizable Profile - ${{ form.billingYearly ? "20/yr" : "2/mo" }}
+        </div>
+        <!-- Display Total Amount -->
+        <p>Total: ${{ totalAmount }}</p>
+        <button @click="prevStep">Previous</button>
+        <button @click="submitForm">Submit</button>
       </div>
-      <div v-if="form.customizableProfile">
-        Customizable Profile - ${{ form.billingYearly ? "20/yr" : "2/mo" }}
-      </div>
-      <!-- Display Total Amount -->
-      <p>Total: ${{ totalAmount }}</p>
-
-      <button @click="prevStep">Previous</button>
-      <button @click="submitForm">Submit</button>
-    </div>
+    </ValidationObserver>
   </section>
 </template>
 <script>
 import { db } from "~/plugins/firebase.js";
 import { collection, addDoc } from "firebase/firestore";
+import { ValidationObserver } from "vee-validate";
 import TextInput from "@/components/form/TextInput.vue";
 import CheckboxInput from "@/components/form/CheckboxInput.vue";
 import RadioGroup from "@/components/form/RadioGroup.vue";
@@ -116,6 +114,7 @@ import StepIndicator from "@/components/form/StepIndicator.vue";
 
 export default {
   components: {
+    ValidationObserver,
     TextInput,
     RadioGroup,
     CheckboxInput,
@@ -180,22 +179,22 @@ export default {
     },
   },
   methods: {
-    nextStep() {
-      this.$validator.validateAll().then((isValid) => {
-        if (isValid) {
-          this.step++;
-        } else {
-          alert("Please correct the errors before proceeding.");
-        }
-      });
+    async nextStep() {
+      const isValid = await this.$refs.observer.validate();
+      if (isValid) {
+        this.step++;
+      }
     },
 
     prevStep() {
+      this.$refs.observer.reset();
       this.step--;
     },
     goToStep(stepNumber) {
+      this.$refs.observer.reset();
       this.step = stepNumber;
     },
+
     async submitForm() {
       try {
         const docRef = await addDoc(collection(db, "forms"), this.form);

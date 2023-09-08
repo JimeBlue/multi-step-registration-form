@@ -20,7 +20,7 @@ export default {
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     { src: "~/plugins/firebase.js", mode: "client" },
-    { src: "~/plugins/vee-validate.js", ssr: true },
+    { src: "~/plugins/vee-validate.js", mode: "client" },
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
