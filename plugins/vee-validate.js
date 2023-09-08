@@ -5,6 +5,10 @@ extend("email", email);
 extend("required", required);
 extend("regex", regex);
 extend("confirmed", confirmed);
+extend("checkbox_required", {
+  validate: (value) => value === true,
+  message: "{_field_} is required.",
+});
 
 export default function VeeValidatePlugin({ app }) {
   configure({

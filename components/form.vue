@@ -54,7 +54,11 @@
       <!-- NOTE: Add-ons-->
       <div v-if="step === 3">
         <h2>Pick Add-ons</h2>
-        <CheckboxInput v-model="form.onlineService" label="Online Service" />
+        <CheckboxInput
+          v-model="form.onlineService"
+          label="Online Service"
+          rules="checkbox_required"
+        />
         <CheckboxInput
           v-model="form.largerStorage"
           :label="
