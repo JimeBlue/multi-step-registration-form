@@ -1,5 +1,5 @@
 <template>
-  <ValidationProvider :rules="rules" v-slot="{ errors }">
+  <ValidationProvider :rules="rules" :name="name" v-slot="{ errors }">
     <div>
       <label v-if="label">{{ label }}</label>
       <div v-for="option in options" :key="option.value">
@@ -37,6 +37,10 @@ export default {
       default: "",
     },
     rules: {
+      type: String,
+      default: "",
+    },
+    name: {
       type: String,
       default: "",
     },

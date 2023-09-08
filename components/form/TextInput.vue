@@ -1,6 +1,6 @@
 <template>
   <div>
-    <ValidationProvider :rules="rules" v-slot="{ errors }">
+    <ValidationProvider :rules="rules" :name="name" v-slot="{ errors }">
       <input type="text" :placeholder="placeholder" v-model="inputValue" />
       <span v-if="errors[0]">{{ errors[0] }}</span>
     </ValidationProvider>
@@ -23,6 +23,10 @@ export default {
       default: "",
     },
     rules: {
+      type: String,
+      default: "",
+    },
+    name: {
       type: String,
       default: "",
     },

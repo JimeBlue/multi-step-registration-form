@@ -8,11 +8,13 @@
         <h2>Personal Information</h2>
         <FormTextInput
           v-model="form.name"
+          name="Your name"
           placeholder="Name"
           rules="required"
         />
         <FormTextInput
           v-model="form.email"
+          name="Your email"
           placeholder="Email"
           rules="required|email"
         />
@@ -28,6 +30,7 @@
         <!-- Plans -->
         <RadioGroup
           v-model="form.plan"
+          name="Slecting a plan"
           label="Select Plan"
           rules="required"
           :options="[
