@@ -12,6 +12,7 @@ extend("checkbox_required", {
 
 export default function VeeValidatePlugin({ app }) {
   configure({
+    mode: "lazy",
     defaultMessage: (field, values) => {
       values._field_ = field;
       switch (values._rule_) {
