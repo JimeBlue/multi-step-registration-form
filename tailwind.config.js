@@ -10,5 +10,18 @@ module.exports = {
     },
   },
 
-  plugins: [],
+  plugins: [
+    ({ addComponents, theme }) => {
+      addComponents({
+        ".container": {
+          width: "100%",
+          marginLeft: "auto",
+          marginRight: "auto",
+          paddingLeft: theme("spacing.5"),
+          paddingRight: theme("spacing.5"),
+          maxWidth: "1240px",
+        },
+      });
+    },
+  ],
 };
