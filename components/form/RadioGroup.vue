@@ -1,7 +1,7 @@
 <template>
   <ValidationProvider :rules="rules" :name="name" v-slot="{ errors }">
     <div>
-      <label v-if="label">{{ label }}</label>
+      <label v-if="label" class="text-red-500">{{ label }}</label>
       <div v-for="option in options" :key="option.value">
         <input
           type="radio"
@@ -9,7 +9,7 @@
           :value="option.value"
           v-model="internalValue"
         />
-        <label :for="option.value">{{ option.label }}</label>
+        <label :for="option.value" class="form-label">{{ option.label }}</label>
       </div>
       <span v-if="errors[0]">{{ errors[0] }}</span>
     </div>

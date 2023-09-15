@@ -152,6 +152,7 @@ import CheckboxInput from "@/components/form/CheckboxInput.vue";
 import RadioGroup from "@/components/form/RadioGroup.vue";
 import StepIndicator from "@/components/form/StepIndicator.vue";
 import "@/assets/css/buttons.css";
+import "@/assets/css/forms.css";
 
 export default {
   components: {
