@@ -24,7 +24,9 @@
               v-model="form.phone_number"
               placeholder="e.g. +1 234 567 890"
             />
-            <button type="button" @click="nextStep">Next</button>
+            <button type="button" @click="nextStep" class="btn btn-primary">
+              Next
+            </button>
           </div>
           <!-- NOTE: Plans-->
           <div v-if="step === 2">
@@ -149,6 +151,7 @@ import TextInput from "@/components/form/TextInput.vue";
 import CheckboxInput from "@/components/form/CheckboxInput.vue";
 import RadioGroup from "@/components/form/RadioGroup.vue";
 import StepIndicator from "@/components/form/StepIndicator.vue";
+import "@/assets/css/buttons.css";
 
 export default {
   components: {

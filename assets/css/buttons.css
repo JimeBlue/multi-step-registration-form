@@ -1,0 +1,19 @@
+.btn {
+  @apply inline-flex items-center font-sans text-base leading-5 max-w-full px-4 py-2 rounded-md transition;
+
+  &:enabled {
+    @apply cursor-pointer;
+  }
+
+  &:disabled {
+    @apply cursor-not-allowed;
+  }
+}
+
+.btn-primary {
+  @apply text-white bg-primary;
+
+  &:not(:disabled):hover {
+    @apply opacity-90;
+  }
+}
