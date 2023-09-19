@@ -1,11 +1,11 @@
 <template>
-  <section class="flex flex-col lg:flex-row">
+  <section class="grid lg:grid-cols-5">
     <!-- NOTE: Step indicator -->
-    <article class="lg:w-[30%]">
+    <article class="lg:col-span-2">
       <StepIndicator :active-step="step" />
     </article>
     <!-- NOTE: Form -->
-    <article class="lg:w-[70%]">
+    <article class="lg:col-span-3">
       <ValidationObserver ref="observer">
         <form @submit.prevent>
           <section v-if="!isSubmitted">
