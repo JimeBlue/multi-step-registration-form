@@ -1,11 +1,13 @@
 <template>
-  <section class="grid lg:grid-cols-5">
+  <section class="grid lg:grid-cols-5 bg-magnolia lg:bg-white lg:p-6">
     <!-- NOTE: Step indicator -->
     <article class="lg:col-span-2">
       <StepIndicator :active-step="step" />
     </article>
     <!-- NOTE: Form -->
-    <article class="lg:col-span-3">
+    <article
+      class="lg:col-span-3 shadow-sm lg:shadow-none bg-white w-11/12 lg:w-full mx-auto lg:mx-0 -mt-16 lg:mt-0"
+    >
       <ValidationObserver ref="observer">
         <form @submit.prevent>
           <section v-if="!isSubmitted">

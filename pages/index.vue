@@ -2,7 +2,7 @@
   <section>
     <h2 class="text-blue-500 font-bold">Multi Step Registration Form</h2>
     <div class="container">
-      <Form class="border" />
+      <Form />
     </div>
   </section>
 </template>

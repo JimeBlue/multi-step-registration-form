@@ -1,6 +1,6 @@
 <template>
   <div
-    class="step-bg bg-cover bg-center lg:bg-bottom pt-10 pb-24 lg:p-0 lg:pt-6 lg:pl-6"
+    class="lg:rounded-lg step-bg bg-cover bg-center lg:bg-bottom pt-10 pb-24 lg:p-0 lg:pt-6 lg:pl-6"
   >
     <div
       class="flex flex-row lg:flex-col justify-around max-w-xs lg:max-w-none mx-auto lg:mx-0 lg:space-y-6"
