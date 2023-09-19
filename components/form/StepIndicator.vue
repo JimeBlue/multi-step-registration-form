@@ -6,22 +6,23 @@
       class="flex flex-row lg:flex-col justify-around max-w-xs lg:max-w-none mx-auto lg:mx-0 lg:space-y-6"
     >
       <ul v-for="(step, index) in steps" :key="index">
-        <li
-          class="w-8 h-8 border border-lightBlue rounded-full flex items-center justify-center text-sm"
-          :class="
-            activeStep === step
-              ? 'bg-lightBlue text-black'
-              : 'bg-transparent text-lightBlue'
-          "
-        >
-          {{ step }}
+        <li class="lg:flex lg:space-x-3">
+          <p
+            class="w-8 h-8 border rounded-full flex items-center justify-center text-sm"
+            :class="
+              activeStep === step
+                ? 'bg-lightBlue border-lightBlue text-black'
+                : 'bg-transparent border-white text-white'
+            "
+          >
+            {{ step }}
+          </p>
+          <article class="hidden lg:block">
+            <p class="text-white/75 text-sm">STEP {{ step }}</p>
+            <p class="uppercase text-white">{{ stepNames[index] }}</p>
+          </article>
         </li>
       </ul>
-    </div>
-    <span class="hidden lg:inline">Step {{ stepInWords }}</span>
-
-    <div class="hidden lg:inline">
-      {{ stepName }}
     </div>
   </div>
 </template>
@@ -36,21 +37,15 @@ export default {
   },
   data() {
     return {
+      // IMPORTANT: si no la uso mas borrarla
       steps: [1, 2, 3, 4],
-      stepInWords: ["One", "Two", "Three", "Four"],
+
       stepNames: ["Your Info", "Select Plan", "Add-ons", "Summary"],
     };
   },
-  computed: {
-    // stepInWords() {
-    //   const words = ["One", "Two", "Three", "Four"];
-    //   return words;
-    // },
-    // stepNames() {
-    //   const names = ["Your Info", "Select Plan", "Add-ons", "Summary"];
-    //   return names[this.step];
-    // },
-  },
+  // IMPORTANT: idea: poner la array con el numbero del step y la array con el nombre del step in the en una computed property y loopearla desde la computed
+  // property en el template
+  computed: {},
 };
 </script>
 <style scoped>
