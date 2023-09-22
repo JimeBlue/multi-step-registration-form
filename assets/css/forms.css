@@ -1,3 +1,7 @@
 .form-label {
-  @apply text-primary font-bold text-sm;
+  @apply text-primary text-sm;
+}
+
+.form-input {
+  @apply p-3 text-base leading-normal placeholder-gray-300 transition-all duration-200 ease-in-out bg-white border border-gray-400 rounded-md outline-none focus:outline-none focus:border-primary w-full;
 }

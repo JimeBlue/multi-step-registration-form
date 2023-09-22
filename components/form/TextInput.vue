@@ -1,9 +1,16 @@
 <template>
   <div>
     <ValidationProvider :rules="rules" :name="name" v-slot="{ errors }">
-      <label :for="id">{{ label }}</label>
-      <input type="text" :placeholder="placeholder" v-model="inputValue" />
-      <span v-if="errors[0]">{{ errors[0] }}</span>
+      <div class="flex flex-col space-y-1.5">
+        <label :for="id" class="form-label">{{ label }}</label>
+        <input
+          type="text"
+          class="form-input"
+          :placeholder="placeholder"
+          v-model="inputValue"
+        />
+        <span v-if="errors[0]">{{ errors[0] }}</span>
+      </div>
     </ValidationProvider>
   </div>
 </template>
