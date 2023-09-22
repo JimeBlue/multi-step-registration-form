@@ -15,19 +15,23 @@
             <div v-if="step === 1">
               <h2>Personal Information</h2>
               <FormTextInput
+                id="name"
                 v-model="form.name"
                 name="Your name"
-                placeholder="Name"
+                label="Name"
+                placeholder="e.g.Stephen King"
                 rules="required"
               />
               <FormTextInput
                 v-model="form.email"
                 name="Your email"
-                placeholder="Email"
+                label="Email Address"
+                placeholder="e.d. stephenking@gmail.com"
                 rules="required|email"
               />
               <FormTextInput
                 v-model="form.phone_number"
+                label="Phone Number"
                 placeholder="e.g. +1 234 567 890"
               />
               <button type="button" @click="nextStep" class="btn btn-primary">
