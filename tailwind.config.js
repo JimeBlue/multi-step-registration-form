@@ -13,6 +13,9 @@ module.exports = {
         magnolia: "#f0f6ff",
         alabastar: "	#fafbff",
       },
+      fontFamily: {
+        sans: ["ubuntu", '"Helvetica Neue"', "Arial", "sans-serif"],
+      },
     },
   },
 

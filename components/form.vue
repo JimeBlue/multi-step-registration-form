@@ -1,5 +1,5 @@
 <template>
-  <section class="grid lg:grid-cols-5 bg-magnolia lg:bg-white lg:p-6">
+  <section class="grid lg:grid-cols-5 bg-magnolia lg:bg-white lg:p-6 font-sans">
     <!-- NOTE: Step indicator -->
     <article class="lg:col-span-2">
       <StepIndicator :active-step="step" />
@@ -169,6 +169,7 @@ import FormDebug from "@/components/form/FormDebug.vue";
 import "@/assets/css/buttons.css";
 import "@/assets/css/forms.css";
 import "@/assets/css/steps.css";
+import "@/assets/css/fonts.css";
 
 export default {
   components: {
