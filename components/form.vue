@@ -153,6 +153,8 @@
         </form>
       </ValidationObserver>
     </article>
+    <!-- NOTE: FormDebug component allowing to navigate to specific step -->
+    <FormDebug :debug="debug" :currentStep="step" @changeStep="setStep" />
   </section>
 </template>
 <script>
@@ -163,6 +165,7 @@ import TextInput from "@/components/form/TextInput.vue";
 import CheckboxInput from "@/components/form/CheckboxInput.vue";
 import RadioGroup from "@/components/form/RadioGroup.vue";
 import StepIndicator from "@/components/form/StepIndicator.vue";
+import FormDebug from "@/components/form/FormDebug.vue";
 import "@/assets/css/buttons.css";
 import "@/assets/css/forms.css";
 
@@ -177,7 +180,7 @@ export default {
   data() {
     return {
       step: 1,
-
+      debug: false,
       isSubmitted: false,
       form: {
         name: "",
@@ -191,6 +194,12 @@ export default {
       },
     };
   },
+  mounted() {
+    if (this.$route.query.debug === "true") {
+      this.debug = true;
+    }
+  },
+
   computed: {
     //  converts the first letter of the form.plan value to uppercase to display the plan name in a user-friendly format.
     chosenPlan() {
@@ -248,6 +257,9 @@ export default {
     },
     goToStep(stepNumber) {
       this.$refs.observer.reset();
+      this.step = stepNumber;
+    },
+    setStep(stepNumber) {
       this.step = stepNumber;
     },
 
