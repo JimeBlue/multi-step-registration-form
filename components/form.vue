@@ -1,5 +1,7 @@
 <template>
-  <section class="grid lg:grid-cols-5 bg-magnolia lg:bg-white lg:p-6 font-sans">
+  <section
+    class="grid lg:grid-cols-5 bg-magnolia lg:bg-white pb-24 lg:p-6 font-sans"
+  >
     <!-- NOTE: Step indicator -->
     <article class="lg:col-span-2">
       <StepIndicator :active-step="step" />
@@ -15,7 +17,7 @@
             <div v-if="step === 1" class="p-6">
               <hgroup class="space-y-2">
                 <h2 class="step-heading">Personal Information</h2>
-                <p class="text-primary">
+                <p class="text-primary lg:text-lg">
                   Please provide your name, email address, and phone number.
                 </p>
               </hgroup>
