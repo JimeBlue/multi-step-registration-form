@@ -1,6 +1,5 @@
 <template>
   <section>
-    <h2 class="text-blue-500 font-bold">Multi Step Registration Form</h2>
     <div class="container">
       <Form />
     </div>
@@ -8,6 +7,7 @@
 </template>
 
 <script>
+import "@/assets/css/custom.css";
 export default {
   name: "IndexPage",
 };

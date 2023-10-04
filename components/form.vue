@@ -3,12 +3,12 @@
     class="grid lg:grid-cols-5 bg-magnolia lg:bg-white pb-24 lg:p-6 font-sans"
   >
     <!-- NOTE: Step indicator -->
-    <article class="lg:col-span-2">
+    <article class="lg:col-span-1">
       <StepIndicator :active-step="step" />
     </article>
     <!-- NOTE: Form -->
     <article
-      class="lg:col-span-3 shadow-sm lg:shadow-none bg-white w-11/12 lg:w-full mx-auto lg:mx-0 -mt-16 lg:mt-0 rounded-lg"
+      class="lg:col-span-4 shadow-sm lg:shadow-none bg-white -mt-16 lg:mt-0 rounded-lg"
     >
       <ValidationObserver ref="observer">
         <form @submit.prevent>
