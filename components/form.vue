@@ -13,7 +13,7 @@
           <section v-if="!isSubmitted">
             <!-- NOTE: Personal Information -->
             <div v-if="step === 1" class="p-6">
-              <h2>Personal Information</h2>
+              <h2 class="step-heading">Personal Information</h2>
               <FormTextInput
                 id="name"
                 v-model="form.name"
@@ -40,7 +40,7 @@
             </div>
             <!-- NOTE: Plans-->
             <div v-if="step === 2" class="p-6">
-              <h2>Select Your Plan</h2>
+              <h2 class="step-heading">Select Your Plan</h2>
               <!-- Plans -->
               <RadioGroup
                 v-model="form.plan"
@@ -76,7 +76,7 @@
             </div>
             <!-- NOTE: Add-ons-->
             <div v-if="step === 3" class="p-6">
-              <h2>Pick Add-ons</h2>
+              <h2 class="step-heading">Pick Add-ons</h2>
               <CheckboxInput
                 v-model="form.onlineService"
                 :label="
@@ -106,7 +106,7 @@
             </div>
             <!-- NOTE: Summary -->
             <div v-if="step === 4" class="p-6">
-              <h2>Summary</h2>
+              <h2 class="step-heading">Summary</h2>
               <p>Finishing up</p>
               <p>Double-check everything looks OK before confirming.</p>
               <!-- Display Chosen Plan with Billing Period and Price -->
@@ -168,6 +168,7 @@ import StepIndicator from "@/components/form/StepIndicator.vue";
 import FormDebug from "@/components/form/FormDebug.vue";
 import "@/assets/css/buttons.css";
 import "@/assets/css/forms.css";
+import "@/assets/css/steps.css";
 
 export default {
   components: {
