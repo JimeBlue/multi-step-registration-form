@@ -6,13 +6,13 @@
     </article>
     <!-- NOTE: Form -->
     <article
-      class="lg:col-span-3 shadow-sm lg:shadow-none bg-white w-11/12 lg:w-full mx-auto lg:mx-0 -mt-16 lg:mt-0"
+      class="lg:col-span-3 shadow-sm lg:shadow-none bg-white w-11/12 lg:w-full mx-auto lg:mx-0 -mt-16 lg:mt-0 rounded-lg"
     >
       <ValidationObserver ref="observer">
         <form @submit.prevent>
           <section v-if="!isSubmitted">
             <!-- NOTE: Personal Information -->
-            <div v-if="step === 1">
+            <div v-if="step === 1" class="p-6">
               <h2>Personal Information</h2>
               <FormTextInput
                 id="name"
@@ -39,7 +39,7 @@
               </button>
             </div>
             <!-- NOTE: Plans-->
-            <div v-if="step === 2">
+            <div v-if="step === 2" class="p-6">
               <h2>Select Your Plan</h2>
               <!-- Plans -->
               <RadioGroup
@@ -75,7 +75,7 @@
               <button type="button" @click="nextStep">Next</button>
             </div>
             <!-- NOTE: Add-ons-->
-            <div v-if="step === 3">
+            <div v-if="step === 3" class="p-6">
               <h2>Pick Add-ons</h2>
               <CheckboxInput
                 v-model="form.onlineService"
@@ -105,7 +105,7 @@
               <button type="button" @click="nextStep">Next</button>
             </div>
             <!-- NOTE: Summary -->
-            <div v-if="step === 4">
+            <div v-if="step === 4" class="p-6">
               <h2>Summary</h2>
               <p>Finishing up</p>
               <p>Double-check everything looks OK before confirming.</p>
