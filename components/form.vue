@@ -8,7 +8,7 @@
     </article>
     <!-- NOTE: Form -->
     <article
-      class="lg:col-span-4 shadow-sm lg:shadow-none bg-white -mt-16 lg:mt-0 rounded-lg"
+      class="lg:col-span-4 shadow-sm lg:shadow-none rounded-lg bg-white -mt-16 lg:mt-0 xl:w-9/12 xl:mx-auto"
     >
       <ValidationObserver ref="observer">
         <form @submit.prevent>
