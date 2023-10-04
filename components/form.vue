@@ -1,6 +1,6 @@
 <template>
   <section
-    class="grid lg:grid-cols-5 bg-magnolia lg:bg-white pb-24 lg:p-6 font-sans"
+    class="grid lg:grid-cols-5 bg-magnolia lg:bg-white lg:rounded-lg pb-24 lg:p-6 font-sans"
   >
     <!-- NOTE: Step indicator -->
     <article class="lg:col-span-1">
