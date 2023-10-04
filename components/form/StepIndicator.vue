@@ -1,6 +1,6 @@
 <template>
   <div
-    class="lg:rounded-lg step-bg bg-cover bg-center lg:bg-bottom pt-10 pb-24 lg:p-0 lg:pt-6 lg:pl-6"
+    class="lg:rounded-lg step-bg bg-cover bg-center lg:bg-[top_80px] pt-10 pb-24 lg:p-0 lg:pt-6 lg:pl-6 lg:pb-96"
   >
     <div
       class="flex flex-row lg:flex-col justify-around max-w-xs lg:max-w-none mx-auto lg:mx-0 lg:space-y-6"
@@ -37,14 +37,11 @@ export default {
   },
   data() {
     return {
-      // IMPORTANT: si no la uso mas borrarla
       steps: [1, 2, 3, 4],
-
       stepNames: ["Your Info", "Select Plan", "Add-ons", "Summary"],
     };
   },
-  // IMPORTANT: idea: poner la array con el numbero del step y la array con el nombre del step in the en una computed property y loopearla desde la computed
-  // property en el template
+
   computed: {},
 };
 </script>
