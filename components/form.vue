@@ -13,28 +13,39 @@
           <section v-if="!isSubmitted">
             <!-- NOTE: Personal Information -->
             <div v-if="step === 1" class="p-6">
-              <h2 class="step-heading">Personal Information</h2>
-              <FormTextInput
-                id="name"
-                v-model="form.name"
-                name="Your name"
-                label="Name"
-                placeholder="e.g.Stephen King"
-                rules="required"
-              />
-              <FormTextInput
-                v-model="form.email"
-                name="Your email"
-                label="Email Address"
-                placeholder="e.d. stephenking@gmail.com"
-                rules="required|email"
-              />
-              <FormTextInput
-                v-model="form.phone_number"
-                label="Phone Number"
-                placeholder="e.g. +1 234 567 890"
-              />
-              <button type="button" @click="nextStep" class="btn btn-primary">
+              <hgroup class="space-y-2">
+                <h2 class="step-heading">Personal Information</h2>
+                <p class="text-primary">
+                  Please provide your name, email address, and phone number.
+                </p>
+              </hgroup>
+              <div class="mt-6 space-y-4">
+                <FormTextInput
+                  id="name"
+                  v-model="form.name"
+                  name="Your name"
+                  label="Name"
+                  placeholder="e.g.Stephen King"
+                  rules="required"
+                />
+                <FormTextInput
+                  v-model="form.email"
+                  name="Your email"
+                  label="Email Address"
+                  placeholder="e.g. stephenking@gmail.com"
+                  rules="required|email"
+                />
+                <FormTextInput
+                  v-model="form.phone_number"
+                  label="Phone Number"
+                  placeholder="e.g. +1 234 567 890"
+                />
+              </div>
+              <button
+                type="button"
+                @click="nextStep"
+                class="btn btn-primary mt-6"
+              >
                 Next
               </button>
             </div>
