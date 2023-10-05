@@ -53,39 +53,52 @@
             </div>
             <!-- NOTE: Plans-->
             <div v-if="step === 2" class="p-6">
-              <h2 class="step-heading">Select Your Plan</h2>
-              <!-- Plans -->
-              <RadioGroup
-                v-model="form.plan"
-                name="Slecting a plan"
-                label="Select Plan"
-                rules="required"
-                :options="[
-                  {
-                    value: 'arcade',
-                    label: form.billingYearly ? 'Arcade 90/yr' : 'Arcade 9/mo',
-                  },
-                  {
-                    value: 'advanced',
-                    label: form.billingYearly
-                      ? 'Advanced 120/yr'
-                      : 'Advanced 12/mo',
-                  },
-                  {
-                    value: 'pro',
-                    label: form.billingYearly ? 'Pro 150/yr' : 'Pro 15/mo',
-                  },
-                ]"
-              />
-              <!-- Toggle Switch for Billing Period -->
-              <div>
-                <CheckboxInput
-                  v-model="form.billingYearly"
-                  :label="form.billingYearly ? 'Yearly' : 'Monthly'"
-                />
+              <hgroup class="space-y-2">
+                <h2 class="step-heading">Select Your Plan</h2>
+                <p class="text-primary lg:text-lg">
+                  You have the option of monthly or yearly billing.
+                </p>
+              </hgroup>
+
+              <div class="mt-6 space-y-4">
+                <!-- Plans -->
+                <div>
+                  <RadioGroup
+                    v-model="form.plan"
+                    name="Slecting a plan"
+                    rules="required"
+                    :options="[
+                      {
+                        value: 'arcade',
+                        label: form.billingYearly
+                          ? 'Arcade 90/yr'
+                          : 'Arcade 9/mo',
+                      },
+                      {
+                        value: 'advanced',
+                        label: form.billingYearly
+                          ? 'Advanced 120/yr'
+                          : 'Advanced 12/mo',
+                      },
+                      {
+                        value: 'pro',
+                        label: form.billingYearly ? 'Pro 150/yr' : 'Pro 15/mo',
+                      },
+                    ]"
+                  />
+                </div>
+                <!-- Toggle Switch for Billing Period -->
+                <div>
+                  <CheckboxInput
+                    v-model="form.billingYearly"
+                    :label="form.billingYearly ? 'Yearly' : 'Monthly'"
+                  />
+                </div>
               </div>
-              <button type="button" @click="prevStep">Previous</button>
-              <button type="button" @click="nextStep">Next</button>
+              <div class="mt-6">
+                <button type="button" @click="prevStep">Previous</button>
+                <button type="button" @click="nextStep">Next</button>
+              </div>
             </div>
             <!-- NOTE: Add-ons-->
             <div v-if="step === 3" class="p-6">
