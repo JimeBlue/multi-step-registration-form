@@ -70,19 +70,18 @@
                     :options="[
                       {
                         value: 'arcade',
-                        label: form.billingYearly
-                          ? 'Arcade 90/yr'
-                          : 'Arcade 9/mo',
+                        label: 'Arcade',
+                        text: form.billingYearly ? ' 90/yr' : ' 9/mo',
                       },
                       {
                         value: 'advanced',
-                        label: form.billingYearly
-                          ? 'Advanced 120/yr'
-                          : 'Advanced 12/mo',
+                        label: 'Advanced',
+                        text: form.billingYearly ? '120/yr' : '12/mo',
                       },
                       {
                         value: 'pro',
-                        label: form.billingYearly ? 'Pro 150/yr' : 'Pro 15/mo',
+                        label: 'Pro',
+                        text: form.billingYearly ? '150/yr' : '15/mo',
                       },
                     ]"
                   />
