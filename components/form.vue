@@ -31,6 +31,7 @@
                   rules="required"
                 />
                 <FormTextInput
+                  id="email"
                   v-model="form.email"
                   name="Your email"
                   label="Email Address"
@@ -38,6 +39,7 @@
                   rules="required|email"
                 />
                 <FormTextInput
+                  id="phone"
                   v-model="form.phone_number"
                   label="Phone Number"
                   placeholder="e.g. +1 234 567 890"
