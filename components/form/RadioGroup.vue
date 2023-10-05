@@ -7,13 +7,19 @@
         <input
           type="radio"
           :id="option.value"
+          class="opacity-0"
           :value="option.value"
           v-model="internalValue"
         />
 
         <label
           :for="option.value"
-          class="flex md:flex-col space-x-3 md:space-x-0 md:space-y-6 justify-start border border-gray-400 rounded-lg p-10 md:p-6"
+          class="flex md:flex-col space-x-3 md:space-x-0 md:space-y-6 justify-start border rounded-lg p-10 md:p-6 hover:border-purplishBlue hover:bg-purplishBlue/5"
+          :class="
+            internalValue === option.value
+              ? 'border-purplishBlue bg-purplishBlue/5'
+              : 'border-gray-400 bg-transparent'
+          "
         >
           <picture v-if="option.value === 'arcade'">
             <svg
