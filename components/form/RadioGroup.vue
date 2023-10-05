@@ -1,6 +1,6 @@
 <template>
   <ValidationProvider :rules="rules" :name="name" v-slot="{ errors }">
-    <div>
+    <div class="grid grid-rows-3 md:grid-rows-1 md:grid-cols-3 md:gap-x-4">
       <label v-if="label">{{ label }}</label>
 
       <div v-for="option in options" :key="option.value">
@@ -13,7 +13,7 @@
 
         <label
           :for="option.value"
-          class="flex space-x-4 p-10 border border-gray-400 rounded-lg"
+          class="flex md:flex-col space-x-3 md:space-x-0 md:space-y-6 justify-start border border-gray-400 rounded-lg p-10 md:p-6"
         >
           <picture v-if="option.value === 'arcade'">
             <svg
